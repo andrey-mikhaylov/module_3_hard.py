@@ -1,4 +1,48 @@
 
+def calculate_structure_sum(*args) -> int:
+    sum = 0
+    for arg in args:
+        #print(arg)
+        if isinstance(arg, str):
+            sum += len(arg)
+        elif isinstance(arg, dict):
+            for key, value in arg.items():
+                sum += calculate_structure_sum(key) + calculate_structure_sum(value)
+        elif hasattr(arg, '__contains__'):
+            for item in arg:
+                sum += calculate_structure_sum(item)
+        else:
+            sum += arg
+    return sum
+
+
+def test():
+    data_structure = [
+        [1, 2, 3],
+        {'a': 4, 'b': 5},
+        (6, {'cube': 7, 'drum': 8}),
+        "Hello",
+        ((), [{(2, 'Urban', ('Urban2', 35))}])
+    ]
+    result = calculate_structure_sum(data_structure)
+    print(result)
+    """
+    Выходные данные (консоль):
+    99
+    """
+
+
+def main():
+    print(calculate_structure_sum({'a': [
+        1, 2, 3, (4, 5, '666'), [], {1:2, 3:4}
+    ]}))
+    pass
+
+
+#test()
+main()
+
+
 
 """
 2023/10/16 00:00|Дополнительное практическое задание по модулю*
