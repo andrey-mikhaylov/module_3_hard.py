@@ -33,14 +33,23 @@ def test():
 
 
 def main():
-    print(calculate_structure_sum({'a': [
-        1, 2, 3, (4, 5, '666'), [], {1:2, 3:4}
-    ]}))
-    pass
+    print(calculate_structure_sum(
+        {'a':
+                [
+                    1,
+                    2,
+                    3,
+                    (
+                        4, 5, '666'
+                    ),
+                    [5, 5],
+                    {1:2, 3:4}
+                ]
+        }, 3.5))
 
 
-#test()
-main()
+test()
+#main()
 
 
 
